@@ -1,0 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    height: 80vh;
+    background: url('../images/hero-bg.jpg') no-repeat center center/cover;
+}
+
+.services-section i {
+    margin-bottom: 10px;
+}
