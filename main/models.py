@@ -29,5 +29,3 @@ class Testimonial(models.Model):
     def __str__(self):
         return f"Testimonial from {self.name}"
 
-image = models.ImageField(upload_to='blog_images/', null=True, blank=True)
-
