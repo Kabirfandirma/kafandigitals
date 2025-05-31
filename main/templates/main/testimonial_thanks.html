@@ -1,0 +1,30 @@
+<!-- main/templates/main/testimonial_thanks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f0f8f5; }
+        .box {
+            background: white;
+            display: inline-block;
+            padding: 30px 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #00a651; }
+        a { text-decoration: none; color: #007f3d; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Thank You!</h1>
+        <p>Your testimonial has been submitted and will be visible after approval.</p>
+        <p><a href="/">Return to Home</a></p>
+    </div>
+</body>
+</html>

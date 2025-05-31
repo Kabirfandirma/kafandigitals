@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<div class="services-header">
+  <h1>Our Services</h1>
+  <p>We offer a wide range of professional services tailored to meet your needs.</p>
+</div>
+
+<div class="services-container">
+  {% for service in services %}
+  <div class="service-item">
+    <img src="{{ service.image.url }}" alt="{{ service.title }}">
+    <h2>{{ service.title }}</h2>
+    <p>{{ service.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

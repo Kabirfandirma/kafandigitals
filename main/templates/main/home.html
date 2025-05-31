@@ -1,0 +1,39 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+  <h1>Welcome to KAFAN DIGITALS</h1>
+  <p>Your one-stop solution for top-notch graphic design and digital services.</p>
+  <a href="{% url 'services' %}" class="btn-primary">Explore Our Services</a>
+  <a href="{% url 'contact' %}" class="btn-secondary">Get in Touch</a>
+</div>
+
+<div class="intro">
+  <h2>About Us</h2>
+  <p>KAFAN DIGITALS is dedicated to delivering high-quality design solutions that make your brand stand out.</p>
+</div>
+
+<div class="blog-section">
+  <h2 style="text-align:center; margin-top: 40px;">Latest Blog Posts</h2>
+  {% for post in posts %}
+    <div class="post">
+      <h3>{{ post.title }}</h3>
+        <p>{{ post.content|truncatewords:30 }}</p>
+      {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width:50%; height:auto;">
+      {% endif %}
+    
+      <p><a href="{% url 'blog_list' %}">Read more</a></p>
+      <hr>
+    </div>
+  {% empty %}
+    <p style="text-align:center;">No blog posts available yet.</p>
+  {% endfor %}
+  <div style="text-align:center; margin-top: 20px;">
+    <a href="{% url 'blog_list' %}" class="btn-primary">View All Posts</a>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}Testimonials{% endblock %}
+
+{% block content %}
+<h1 style="text-align:center; margin-top: 40px;">What Our Clients Say</h1>
+
+{% for testimonial in testimonials %}
+    <div class="testimonial">
+        <strong>{{ testimonial.name }}</strong>
+        <p>{{ testimonial.message }}</p>
+    </div>
+{% empty %}
+    <p style="text-align:center;">No testimonials yet.</p>
+{% endfor %}
+
+<h2 style="text-align:center;">Share Your Testimonial</h2>
+<form method="post" class="contact-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-submit">Submit</button>
+</form>
+{% endblock %}

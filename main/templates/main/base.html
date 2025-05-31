@@ -1,0 +1,70 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KAFAN DIGITALS - {% block title %}Welcome{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'services' %}">Services</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'testimonials' %}">Testimonials</a>
+        <a href="{% url 'blog_list' %}">Blog</a>
+    </nav>
+
+    <!-- Main content area -->
+    <main class="content">
+        {% block content %}
+        <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    <!-- Toast Container for messages -->
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+    {% if messages %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        {% for message in messages %}
+          showToast("{{ message|escapejs }}");
+        {% endfor %}
+      });
+
+      function showToast(message) {
+        const toast = document.createElement('div');
+        toast.innerText = message;
+        toast.style.backgroundColor = '#4BB543';  // Green background for success
+        toast.style.color = '#fff';
+        toast.style.padding = '12px 20px';
+        toast.style.marginBottom = '10px';
+        toast.style.borderRadius = '5px';
+        toast.style.boxShadow = '0 0 10px rgba(0,0,0,0.1)';
+        toast.style.fontSize = '14px';
+        toast.style.opacity = '0.95';
+        toast.style.transition = 'opacity 0.5s ease';
+
+        document.getElementById('toast-container').appendChild(toast);
+
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          setTimeout(() => toast.remove(), 500);
+        }, 3000); // Show toast for 3 seconds
+      }
+    </script>
+    {% endif %}
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 KAFAN DIGITALS. All rights reserved.
+    </footer>
+
+</body>
+</html>
